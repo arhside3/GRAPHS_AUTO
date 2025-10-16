@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>3D Визуализация угла опережения зажигания</title>
+    <link rel="stylesheet" href="static/main.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div class="app-container">        
+        <div class="main-content">
+            <div class="heatmap-panel">
+                <h2 class="panel-title">RPM Угол опережения</h2>
+                
+                <div class="parameter-table-container">
+                    <table class="parameter-table" id="spark-angle-table">
+                    </table>
+                </div>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <h3>Управление</h3>
+                        <div class="control-buttons">
+                            <button id="refresh">Обновить</button>
+                            <button id="send">Отправить</button>
+                            <button id="burn">Записать</button>
+                            <button id="import">Импорт</button>
+                            <button id="export">Экспорт</button>
+                            <button id="reset-values">Сбросить значения</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terrain-panel">
+                <div id="terrain-container"></div>
+                
+                <div class="engine-status">
+                    Текущая точка: RPM=<span id="status-rpm">900</span>, 
+                    Дроссель=<span id="status-throttle">50.0</span>%, 
+                    Угол=<span id="status-angle">0</span>°
+                </div>
+                
+                <div class="terrain-controls">
+                    <button id="reset-view">Сбросить вид</button>
+                    <button id="toggle-wireframe">Переключить каркас</button>
+                    <button id="change-color">Сменить палитру</button>
+                    <button id="toggle-axes">Переключить оси</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="../src/main.js"></script>
+</body>
+</html>
